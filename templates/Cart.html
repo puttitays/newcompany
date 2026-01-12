@@ -1,0 +1,268 @@
+{% extends "Homepage.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+<p id="resultcart"></p>
+<form method="post" action="{% url 'orders' %}">
+    {% csrf_token %}
+<p style="font-weight: bold;">Your delivery address</p>
+
+
+<div class="d-flex">
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend ms-4">
+    <span class="input-group-text" id="basic-addon1">Name</span>
+
+  </div>
+  <input name="Name" type="text" class="form-control" placeholder="your name" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+ <div class="input-group mb-3 ms-3">
+  <div class="input-group-prepend ">
+    <span class="input-group-text" id="basic-addon1">Phone no.</span>
+  </div>
+  <input name="Phone no." type="text" class="form-control me-4" placeholder="Phone no" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+
+</div>
+
+
+
+    <div class="d-flex">
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend ms-4">
+    <span class="input-group-text" id="basic-addon1">Street</span>
+  </div>
+  <input name="Street" type="text" class="form-control" placeholder="your name" aria-label="" aria-describedby="basic-addon1">
+</div>
+
+ <div class="input-group mb-3 ms-3">
+  <div class="input-group-prepend ">
+    <span class="input-group-text" id="basic-addon1">Postal.</span>
+  </div>
+  <input name="Postal" type="text" class="form-control" placeholder="" aria-label="Postal" aria-describedby="basic-addon1">
+</div>
+
+
+         <div class="input-group mb-3 ms-3">
+  <div class="input-group-prepend ">
+    <span class="input-group-text" id="basic-addon1">City.</span>
+  </div>
+  <input name="City" type="text" class="form-control me-4" placeholder="City" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+</div>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text ms-4">Add note</span>
+  </div>
+  <textarea name="Note" class="form-control  me-4" aria-label="Note to us"></textarea>
+</div>
+
+<!--<p>Session ID: {{ session_id }}</p>-->
+
+<p style="font-weight: bold;">Your cart</p>
+
+<table class="table table-hover" style="table-layout: fixed;">
+  <thead><tr>
+    <th></th>
+<th>
+    Product
+
+</th>
+    <th>
+    Type
+  </th>
+      <th>Color</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total</th>
+      <th></th>
+  </tr>
+
+  </thead>
+
+  <tbody id="cart">
+
+</tbody>
+</table>
+    <input type="hidden" name="user" value="{{session_id}}">
+
+
+<div class="text-bg-dark p-2" style="text-align:right"><p style="display:inline;">Total </p><p id="total" class="me-2" style="display:inline;"></p><span>  </span>
+
+<button id="submit_button" class="btn btn-primary" type="submit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Submit your order</button>
+
+</div>
+</form>
+
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTopLabel">Delivery address</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="d-flex gap-2">
+        <div class="input-group mb-3 w-50">
+      <span class="input-group-text">Name</span>
+      <input type="text" class="form-control" placeholder="your name" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+<div class="input-group mb-3 w-50 ">
+  <span class="input-group-text" id="basic-addon1">Phone no.</span>
+  <input type="text" class="form-control" placeholder="0x-xxx" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+      </div>
+
+        <div class="d-flex gap-2">
+      <div class="input-group mb-3 ">
+  <span class="input-group-text" id="basic-addon1">Street</span>
+  <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+      <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Postal</span>
+  <input type="text" class="form-control" placeholder="Postal" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+          <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">City</span>
+  <input type="text" class="form-control" placeholder="City" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+<!--        <button type="submit" class="btn btn-primary" id="">Place your order</button>-->
+<!--        </a>-->
+      </div>
+    ...
+  </div>
+</div>
+
+
+<script>
+
+  let cart= localStorage.getItem("cart")
+    const showcart=document.getElementById("resultcart")
+    showcart.textContent=cart
+console.log(cart)
+
+</script>
+<script>
+  let carts=JSON.parse(localStorage.getItem("cart"))||[]
+  console.log(carts)
+  const tboday=document.getElementById("cart")||[]
+  carts.forEach(item=>{
+      keys=["Image","product_name","Type","Color","Width","Height","Quantity","Price"]
+      const imgTD=document.createElement("td");
+      imgTD.classList.add("p-3")
+      imgTD.style.width = "10px";
+      const itemtr=document.createElement("tr");
+
+      itemtr.id=`Row_${item["product_no"]}`
+      const item_img=document.createElement("img");
+      item_img.src=item.Image
+      item_img.classList.add("img-fluid", "rounded","w-75")
+      item_input=document.createElement("input")
+      item_input.type="hidden"
+      item_input.name="Image[]"
+      item_input.value=item.Image
+      item_img.appendChild(item_input)
+      imgTD.appendChild(item_img)
+      itemtr.appendChild(imgTD)
+            for (let i=1;i<keys.length;i++){
+
+                  const itemdetails=document.createElement("td");
+                  const requestobject=document.createElement("input");
+                  requestobject.type="hidden"
+                  const key=keys[i]
+                  requestobject.name=`${key}[]`
+                  requestobject.value = item[key]||"";
+                  console.log(key)
+                  itemdetails.textContent=item[key]
+                  itemdetails.appendChild(requestobject)
+                  itemtr.appendChild(itemdetails)
+
+            }
+      total=item["Quantity"]*item["Price"]
+      const total_price=document.createElement("td")
+      total_price.textContent=total
+      const delete_td=document.createElement("td")
+      const delete_button=document.createElement("button");
+
+      delete_button.type="button"
+      delete_button.id=item["product_no"]
+      delete_button.textContent="Remove"
+      delete_button.classList.add('btn','btn-danger','btn-sm')
+
+ itemtr.appendChild(total_price)
+ delete_td.appendChild(delete_button)
+ itemtr.appendChild(delete_td)
+ tboday.appendChild(itemtr)
+})
+
+
+
+
+</script>
+
+
+
+<script>
+total=0
+  const total_amount=document.getElementById("total")
+  carts.forEach(item=>{
+  total += (item["Quantity"]*item["Price"])
+    console.log(total)
+  })
+
+  total_amount.textContent=total.toLocaleString()
+
+
+</script>
+
+<script>
+
+    for(let i=0;i<=((carts.length));i++){
+
+    const delete_button=document.getElementById(i);
+    if (delete_button){
+    delete_button.addEventListener("click",function(){
+
+        const delete_row=document.getElementById(`Row_${i}`);
+        let carts = JSON.parse(localStorage.getItem("cart")) || [];
+        carts=carts.filter(carts => carts.product_no != i);
+        console.log(carts)
+        delete_row.remove()
+        localStorage.setItem("cart",JSON.stringify(carts));
+        const total_amount=document.getElementById("total")
+        let total=0
+        carts.forEach(item=>{
+        total += (item["Quantity"]*item["Price"])
+
+        })
+        total_amount.textContent=total.toLocaleString()
+        const submit_button=document.getElementById("submit_button")
+        if (total_amount.textContent==0){
+                submit_button.disabled=true;
+        }
+        else{
+        submit_button.disabled=false;
+        }
+    })
+}
+
+}
+
+
+
+</script>
+
+{% endblock %}

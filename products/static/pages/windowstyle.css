@@ -1,0 +1,166 @@
+table ,td{
+  border:0.5px solid white;border-collapse: collapse;color:white;width: fit-content;
+width:100%
+
+}
+th {
+
+ border:0.5px solid white;
+
+}
+
+li {color:white;}
+body {background-color:black;}
+
+p,h2{color:white}
+
+#demo{color:#CF00BE;}
+
+.inputita {
+color:white;
+}
+.inline {
+    display :inline-block;
+}
+
+select {
+
+    display :inline-block;
+
+}
+
+label{
+color: white;
+
+
+}
+
+
+
+
+h1{
+top:0;
+border-style: solid;
+border-radius:20px;
+padding:5px 12px;
+text-align:center;
+font-family: "Lexend Giga", sans-serif;
+background-color: black;
+color:white;
+font-size:15px;
+font-weight:200;
+}
+
+
+
+.header{
+background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family: "Lexend Giga", sans-serif;
+}
+
+nav .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-variation-settings:'wght' 100;
+
+
+    color: yellow;
+
+}
+
+nav{
+padding-left: 20px;
+border-bottom: 1.2px
+solid white; position:
+sticky; top: 0;
+background-color: black;
+
+
+}
+
+form {
+  border-style: solid;
+  border-radius: 20px;
+  background-color: #f2f2f2;
+  padding: 30px ;
+  background-color: black;
+  color:white;
+}
+
+
+
+
+body{
+font-family: "Roboto Mono", monospace;
+color:white;
+
+}
+
+.table_result td:nth-child(4) {
+    border-left: 0.5px solid white;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.paymentform{
+  border-style: solid;
+  border-radius: 20px;
+  background-color: black;
+  padding: 30px ;
+  box-sizing: border-box;
+  width: 50%;
+
+}
+
+
+
+.tdStyle,.tdStyle * {
+    color: black;
+     background-color:pink;
+}
+.tdStyle td{
+
+}
+.tdStyle input{
+    color: white;
+background-color:black;
+
+}
+
+
+
+td * {
+     font-size: 10px;
+     }
+
+td { width: 100px; }
+
+
+.inserttask {
+               width : 70px;
+               height  : 9px;
+               border:0.001px solid #656769 ;
+               border-radius :4px;
+               background:black;
+
+                color:white;
+
+}
+
+button {
+      color:white;
+      width : 75px;
+      background-color:black;
+      border-radius: 4px;
+      font-size:20px;
+          padding-left: 1px;
+    padding-right: 1px;
+      height  :40x;
+              padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+cursor: pointer;
+}

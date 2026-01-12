@@ -1,0 +1,63 @@
+{% extends "Homepage.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+<p >text purchase</p>
+
+
+<table class="table table-hover" style="table-layout: fixed;">
+  <thead><tr>
+    <th></th>
+
+    <th>
+    Product name
+  </th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total</th>
+      <th>Status</th>
+  </tr>
+
+  </thead>
+
+  <tbody id="purchase">
+  {% for order in user_order %}
+  <tr>
+      <td class="img-fluid rounded w-75">
+          <img width="100px" src="{{order.img}}"></td>
+      <td>{{order.product_name}}</td>
+      <td>{{order.Width}}</td>
+      <td>{{order.Height}}</td>
+      <td>{{order.Quantity}}</td>
+        <td>{{order.Price}}</td>
+<td>{{order.total}}</td>
+    <td id="status">{% if not order.Payment_received %}
+        <i class="bi bi-slash-circle text-danger"><span> </span></i>Payment not received
+
+        {% else %}
+        <i class="bi-check-circle text-success" ><span> </span></i>Payment received
+        {% endif %}
+
+    </td>
+<i id="checkmark">
+</i>
+  </tr>
+{% endfor %}
+
+
+</tbody>
+</table>
+
+<script>
+
+
+
+</script>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "Homepage.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+
+<p class="text-center text-success">Your order has been submitted <i class="bi bi-bag-check fs-2"></i> </p>
+
+
+<div class="card text-bg-dark mb-3 mx-auto" style="max-width: 25rem;">
+  <div class="card-header">Scan here to make a payment</div>
+  <div class="card-body">
+    <img src="{% static 'pages/swish-QR-Code.png' %}" class="img-fluid">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
