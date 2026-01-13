@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <br><br>
-<p id="resultcart"></p>
+<!--<p id="resultcart"></p>-->
 <form method="post" action="{% url 'orders' %}">
     {% csrf_token %}
 <p style="font-weight: bold;">Your delivery address</p>
@@ -103,53 +103,9 @@
 </form>
 
 
-<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasTopLabel">Delivery address</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-
-    <div class="d-flex gap-2">
-        <div class="input-group mb-3 w-50">
-      <span class="input-group-text">Name</span>
-      <input type="text" class="form-control" placeholder="your name" aria-label="Username" aria-describedby="basic-addon1">
-    </div>
-<div class="input-group mb-3 w-50 ">
-  <span class="input-group-text" id="basic-addon1">Phone no.</span>
-  <input type="text" class="form-control" placeholder="0x-xxx" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-      </div>
-
-        <div class="d-flex gap-2">
-      <div class="input-group mb-3 ">
-  <span class="input-group-text" id="basic-addon1">Street</span>
-  <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-      <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">Postal</span>
-  <input type="text" class="form-control" placeholder="Postal" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-
-          <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">City</span>
-  <input type="text" class="form-control" placeholder="City" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-<!--        <button type="submit" class="btn btn-primary" id="">Place your order</button>-->
-<!--        </a>-->
-      </div>
-    ...
-  </div>
-</div>
-
-
 <script>
 
-  let cart= localStorage.getItem("cart")
+  let cart= localStorage.getItem("cart")||""
     const showcart=document.getElementById("resultcart")
     showcart.textContent=cart
 console.log(cart)
@@ -232,6 +188,7 @@ total=0
 
     for(let i=0;i<=((carts.length));i++){
 
+
     const delete_button=document.getElementById(i);
     if (delete_button){
     delete_button.addEventListener("click",function(){
@@ -242,6 +199,8 @@ total=0
         console.log(carts)
         delete_row.remove()
         localStorage.setItem("cart",JSON.stringify(carts));
+        carts = JSON.parse(localStorage.getItem("cart")) || [];
+        cart_no.textContent=carts.length
         const total_amount=document.getElementById("total")
         let total=0
         carts.forEach(item=>{

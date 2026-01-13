@@ -37,20 +37,17 @@
 
    </ul>
 <div class="form-check form-switch d-flex justify-content-end" style="color:white">
+        <a class="nav-link active me-3" aria-current="page" href="{%url 'cart' %}">
+<button type="button" class="btn btn-primary position-relative border-0 bg-transparent p-0">
 
-          <a class="nav-link active me-3" aria-current="page" href="{%url 'cart' %}"><i class="bi bi-cart fs-4">
-
-  <span id="cart_no" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span id="cart_no" style="top: 25%;left:10%" class="position-absolute translate-middle badge rounded-pill bg-danger">
     99+
     <span class="visually-hidden">Cart</span>
   </span>
+ <i class="bi bi-cart fs-4"></i>
+</button>
 
-
-
-
-
-              
-          </i></a>
+</a>
 
 {% if offer_status %}
     <a href="{%url 'offer' %}">

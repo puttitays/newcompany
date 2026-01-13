@@ -302,6 +302,9 @@ document.getElementById("type").value = `${type}`;
         localStorage.setItem("cart",JSON.stringify(cartlist));
         console.log(cartlist)
 
+            carts = JSON.parse(localStorage.getItem("cart")) || [];
+            cart_no.textContent=carts.length
+
   })
 
 
