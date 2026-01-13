@@ -38,7 +38,19 @@
    </ul>
 <div class="form-check form-switch d-flex justify-content-end" style="color:white">
 
-          <a class="nav-link active me-3" aria-current="page" href="{%url 'cart' %}"><i class="bi bi-cart fs-4"></i></a>
+          <a class="nav-link active me-3" aria-current="page" href="{%url 'cart' %}"><i class="bi bi-cart fs-4">
+
+  <span id="cart_no" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    99+
+    <span class="visually-hidden">Cart</span>
+  </span>
+
+
+
+
+
+              
+          </i></a>
 
 {% if offer_status %}
     <a href="{%url 'offer' %}">
@@ -87,6 +99,13 @@
 
 
 
+<script>
+            const cart_no=document.getElementById("cart_no")
+            
+    
+</script>
+
+    
 
 
 {% block content %}{% endblock %}
