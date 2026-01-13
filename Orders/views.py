@@ -77,4 +77,4 @@ def create_orders_from_user(request):
         # file = request.POST.get("file")
         )
 
-    return render(request, "swishpayment.html")
+    return render(request, "offer_success.html")
