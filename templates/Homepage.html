@@ -101,8 +101,8 @@
 
 <script>
             const cart_no=document.getElementById("cart_no")
-            
-    
+            carts = JSON.parse(localStorage.getItem("cart")) || [];
+            cart_no.textContent=carts.length
 </script>
 
     
