@@ -63,7 +63,7 @@
 </div>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
         <p class="card-title" style="color:green;display:inline"><strong>SEK</strong></p>
-        <p id="price" class="card-title" style="color:green;display:inline"><strong>91.58</strong></p><br><br>
+        <p id="Standard_price" class="card-title" style="color:green;display:inline"><strong>91.58</strong></p><br><br>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sizingmodal" data-product="Standard">
   Add to cart
 </button>
@@ -125,7 +125,9 @@
   <label class="form-check-label" for="inlineCheckbox1">White</label>
 </div>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <a href="#" class="btn btn-primary">Add to cart</a>
+         <p class="card-title" style="color:green;display:inline"><strong>SEK</strong></p>
+        <p id="Super_price" class="card-title" style="color:green;display:inline"><strong>91.58</strong></p><br><br>
+        <a href="#" class="btn btn-primary data-product=Super">Add to cart</a>
       </div>
     </div>
   </div>
@@ -184,7 +186,9 @@
   <label class="form-check-label" for="inlineCheckbox1">White</label>
 </div>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+                 <p class="card-title" style="color:green;display:inline"><strong>SEK</strong></p>
+        <p id="Premium_price" class="card-title" style="color:green;display:inline"><strong>91.58</strong></p><br><br>
+        <a href="#" class="btn btn-primary data-product=Premium">Add to cart</a>
       </div>
     </div>
   </div>
@@ -248,22 +252,22 @@
 
 
 <script>
-
-  const price=document.getElementById("price")
-const product_name=document.getElementById("sizingmodal")
+  const type = button.getAttribute('data-product');
+  const price=document.getElementById(`${type}_price`)
+  const product_name=document.getElementById("sizingmodal")
   product_name.addEventListener('show.bs.modal',function(event){
   const button = event.relatedTarget;
-  const type = button.getAttribute('data-product');
+  
 
-document.getElementById("type").value = `${type}`;
+  document.getElementById("type").value = `${type}`;
   })
 
 
       const width=document.getElementById("Width").value;
-  cart.addEventListener('click',function(event){
+      cart.addEventListener('click',function(event){
       const cart=localStorage.getItem("cart");
-       let cartlist=JSON.parse(cart) || [];
-    img_cart={"White":"{% static 'pages/white window.jpg' %}","Brown":"{% static 'pages/brown-window.png' %}","Red":"{% static 'pages/Red_window.jpg' %}"}
+      let cartlist=JSON.parse(cart) || [];
+      img_cart={"White":"{% static 'pages/white window.jpg' %}","Brown":"{% static 'pages/brown-window.png' %}","Red":"{% static 'pages/Red_window.jpg' %}"}
 
       let no;
       if (cartlist.length>0){
