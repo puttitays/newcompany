@@ -127,7 +127,12 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
          <p class="card-title" style="color:green;display:inline"><strong>SEK</strong></p>
         <p id="Super_price" class="card-title" style="color:green;display:inline"><strong>91.58</strong></p><br><br>
-        <a href="#" class="btn btn-primary data-product=Super">Add to cart</a>
+
+
+
+                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sizingmodal" data-product="Super">
+  Add to cart
+</button>
       </div>
     </div>
   </div>
@@ -188,7 +193,9 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
                  <p class="card-title" style="color:green;display:inline"><strong>SEK</strong></p>
         <p id="Premium_price" class="card-title" style="color:green;display:inline"><strong>91.58</strong></p><br><br>
-        <a href="#" class="btn btn-primary data-product=Premium">Add to cart</a>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sizingmodal" data-product="Premium">
+  Add to cart
+</button>
       </div>
     </div>
   </div>
@@ -252,14 +259,15 @@
 
 
 <script>
-  const type = button.getAttribute('data-product');
-  const price=document.getElementById(`${type}_price`)
+
+
+let Window_type;
   const product_name=document.getElementById("sizingmodal")
   product_name.addEventListener('show.bs.modal',function(event){
   const button = event.relatedTarget;
-  
-
-  document.getElementById("type").value = `${type}`;
+  Window_type = button.getAttribute('data-product');
+  console.log(Window_type)
+;
   })
 
 
@@ -279,25 +287,27 @@
 
        }
 
+      const price=document.getElementById(`${Window_type}_price`).textContent
+      console.log(price)
       const width=document.getElementById("Width").value;
       const height=document.getElementById("Height").value;
       const quantity=document.getElementById("Quantity").value;
       const Product_name=document.getElementById("product_name").value;
-      const Price=document.getElementById("price").textContent;
-      const type=document.getElementById("type").value;
+
+
       const color=document.getElementById("color").value;
+      console.log(Window_type)
       const img=img_cart[color]
-      console.log(Price)
       const Productdetails={
             product_no:no,
-            Type:type,
+            Type:Window_type,
             Color:color,
             Image:img ,
             product_name:Product_name,
             Width:width,
             Height:height,
             Quantity:quantity,
-            Price:Price
+            Price:price
 
 
             }

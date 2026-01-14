@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <br><br>
-<!--<p id="resultcart"></p>-->
+<p id="resultcart"></p>
 <form method="post" action="{% url 'orders' %}">
     {% csrf_token %}
 <p style="font-weight: bold;">Your delivery address</p>
