@@ -263,7 +263,8 @@ document.getElementById("type").value = `${type}`;
   cart.addEventListener('click',function(event){
       const cart=localStorage.getItem("cart");
        let cartlist=JSON.parse(cart) || [];
-      const img=document.getElementById("Standard2").src;
+    img_cart={"White":"{% static 'pages/white window.jpg' %}","Brown":"{% static 'pages/brown-window.png' %}","Red":"{% static 'pages/Red_window.jpg' %}"}
+
       let no;
       if (cartlist.length>0){
         no=(cartlist[cartlist.length-1].product_no)+1;
@@ -281,6 +282,7 @@ document.getElementById("type").value = `${type}`;
       const Price=document.getElementById("price").textContent;
       const type=document.getElementById("type").value;
       const color=document.getElementById("color").value;
+      const img=img_cart[color]
       console.log(Price)
       const Productdetails={
             product_no:no,
